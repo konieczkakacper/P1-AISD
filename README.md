@@ -2,7 +2,7 @@
 cop Robert D.
 
 funkcje pozostałe do zrobienia:
--swap \
+
 -selection_sort \
 -insertion_sort(3.5) \
 -quick_sort(4) \

@@ -22,6 +22,14 @@ int argmin(int *A, int begin, int end) // szukanie najniższego argumentu
     return  marg;
 }
 
+void swap(int *A, int i, int j)
+{
+    int tmp;
+    tmp = A[i];
+    A[i] = A[j];
+    A[j] = tmp;
+}
+
 void fill_random(int *A, int n)  //generuje randomowe liczby na 3
 {
     for (int i = 0; i < n; i++)

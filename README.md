@@ -9,3 +9,4 @@ funkcje pozostałe do zrobienia:
 -randomized_quick_sort(4)
 -heap_sort(5)
 
+termin oddania 14.03.2021 23:59

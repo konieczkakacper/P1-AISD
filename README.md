@@ -1,5 +1,5 @@
 # Projekt-1-algorytmy
-cop Robert D.
+co-op Robert D.
 
 funkcje pozostałe do zrobienia:
 

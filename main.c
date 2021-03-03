@@ -28,6 +28,7 @@ void swap(int *A, int i, int j) //uzyte w sekectioSort
     tmp = A[i];
     A[i] = A[j];
     A[j] = tmp;
+    printf("elooo");
 }
 
 

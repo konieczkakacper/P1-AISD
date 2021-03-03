@@ -135,14 +135,22 @@ void quickSortAll(int *A, int n)
     quickSort(A, 0, n - 1);
 }
 
-void randomizedQuickSort(int *A, int p, int r)
+int randomizedPartition(int *A, int p, int r)    
 {
-    // TODO: implement na 4
-   /* if(p < r)
+    int i = random();                           // TODO: O CO TU KAMAN Z TYM RANDOM????!?!?!?!
+    swap(A, i, r);
+    return partition(A, p, r);
+}
+
+void randomizedQuickSort(int *A, int p, int r)   // TODO: DO SPRAWDZENIA CZY DZIAŁA
+{
+    int q;
+    if(p < r)
     {
-        randomizedQuickSort(A,p,q-1);  //FIXME: próba przepisania pseudo kodu dopisac reszre funkcji
-        randomizedQuickSort(A,q+1,r);
-    } */
+        q = randomizedPartition(A, p, r);
+        randomizedQuickSort(A, p, q - 1);
+        randomizedQuickSort(A, q + 1, r);
+    }
 }
 
 void randomizedQuickSortAll(int *A, int n)

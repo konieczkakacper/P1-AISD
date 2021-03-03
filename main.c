@@ -38,7 +38,7 @@ void fill_random(int *A, int n)  //generuje randomowe liczby na 3
     }
 }
 
-void fill_increasing(int *A, int n) // TODO: implement na 3 zrobione
+void fill_increasing(int *A, int n)
 {
     int i;
     for (i = 0; i < n; i++)
@@ -47,7 +47,7 @@ void fill_increasing(int *A, int n) // TODO: implement na 3 zrobione
     }
 }
 
-void fill_decreasing(int *A, int n) // TODO: implement na 3 zrobione
+void fill_decreasing(int *A, int n)
 {
     int i;
     for (i = n; i >= 0; i--)
@@ -56,12 +56,12 @@ void fill_decreasing(int *A, int n) // TODO: implement na 3 zrobione
     }
 }
 
-void fill_vshape(int *A, int n) // TODO: implement na 3 zrobione
+void fill_vshape(int *A, int n)
 {
     int i;
     for (i = n; i >= n / 2; i--)
     {
-        A[n - 1] = i;
+        A[n - i] = i;
     }
     i = 0;
     for(i = n /2 +1; i < n; i++)
@@ -70,13 +70,14 @@ void fill_vshape(int *A, int n) // TODO: implement na 3 zrobione
     }
 }
 
-void selection_sort(int *A, int n) //TODO : dopisac do tego function min i swap (implement) na 3
+void selection_sort(int *A, int n)
 {
     int i;
     for(i = 0; i < n; i++)
     {
         int j;
-        j = argmin;
+        j = argmin(A, i, n);
+        swap(A,i,j);
 
     }
 }

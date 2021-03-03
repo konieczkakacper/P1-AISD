@@ -99,10 +99,36 @@ void insertionSort(int *A, int n)
     }
 }
 
+
+int partition(int *A, int p, int r) //funkcja wykorzystana w funkcji quickSort
+{
+    int x = A[r];
+    int i = p - 1;
+    for(int j = p; j < r; j++)
+    {
+        if(A[j] <= x)
+        {
+           i++;
+           swap(A, i, j);
+        }
+    }
+    i++;
+    swap(A, i, r);
+    return i;
+}
+        
+        
+    
+
 void quickSort(int *A, int p, int r)
 {
-    // TODO: implement na 4.0
-} //
+    if(p < r)
+    {
+        q = partition(A, p, r);
+        quickSort(A, p, q - 1);
+        quickSort(A, q + 1, r); 
+    }
+}
 
 void quickSortAll(int *A, int n)
 {

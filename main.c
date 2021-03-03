@@ -8,7 +8,7 @@
 
 int ns[] = { 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000 };
 
-int argmin(int *A, int begin, int end) // szukanie najniższego argumentu
+int argMin(int *A, int begin, int end) // szukanie najniższego argumentu uzyte w selectionSort
 {
     int marg = begin;
     int i;
@@ -22,7 +22,7 @@ int argmin(int *A, int begin, int end) // szukanie najniższego argumentu
     return  marg;
 }
 
-void swap(int *A, int i, int j)
+void swap(int *A, int i, int j) //uzyte w sekectioSort
 {
     int tmp;
     tmp = A[i];
@@ -30,7 +30,8 @@ void swap(int *A, int i, int j)
     A[j] = tmp;
 }
 
-void fill_random(int *A, int n)  //generuje randomowe liczby na 3
+
+void fillRandom(int *A, int n)  //generuje randomowe liczby na 3
 {
     for (int i = 0; i < n; i++)
     {
@@ -38,7 +39,7 @@ void fill_random(int *A, int n)  //generuje randomowe liczby na 3
     }
 }
 
-void fill_increasing(int *A, int n)
+void fillIncreasing(int *A, int n)
 {
     int i;
     for (i = 0; i < n; i++)
@@ -47,7 +48,7 @@ void fill_increasing(int *A, int n)
     }
 }
 
-void fill_decreasing(int *A, int n)
+void fillDecreasing(int *A, int n)
 {
     int i;
     for (i = n; i >= 0; i--)
@@ -56,7 +57,7 @@ void fill_decreasing(int *A, int n)
     }
 }
 
-void fill_vshape(int *A, int n)
+void fillVshape(int *A, int n)
 {
     int i;
     for (i = n; i >= n / 2; i--)
@@ -70,59 +71,70 @@ void fill_vshape(int *A, int n)
     }
 }
 
-void selection_sort(int *A, int n)
+void selectionSort(int *A, int n)
 {
     int i;
     for(i = 0; i < n; i++)
     {
         int j;
-        j = argmin(A, i, n);
+        j = argMin(A, i, n);
         swap(A,i,j);
 
     }
 }
 
-void insertion_sort(int *A, int n)
+void insertionSort(int *A, int n)
 {
-    // TODO: implement na 3.5
+    int i,j;
+    for(j = 1; j < n; j++)
+    {
+        int key = A[j];
+        i = j -1;
+        while(i >= 0 && A[i] > key)
+        {
+            A[i + 1] = A[i];
+            i -= 1;
+        }
+        A[i + 1] = key;
+    }
 }
 
-void quick_sort(int *A, int p, int r)
+void quickSort(int *A, int p, int r)
 {
     // TODO: implement na 4.0
 } //
 
-void quick_sort_all(int *A, int n)
+void quickSortAll(int *A, int n)
 {
-    quick_sort(A, 0, n - 1);
+    quickSort(A, 0, n - 1);
 }
 
-void randomized_quick_sort(int *A, int p, int r)
+void randomizedQuickSort(int *A, int p, int r)
 {
     // TODO: implement na 4
    /* if(p < r)
     {
-        randomized_quick_sort(A,p,q-1);  //FIXME: próba przepisania pseudo kodu dopisac reszre funkcji
-        randomized_quick_sort(A,q+1,r);
+        randomizedQuickSort(A,p,q-1);  //FIXME: próba przepisania pseudo kodu dopisac reszre funkcji
+        randomizedQuickSort(A,q+1,r);
     } */
 }
 
-void randomized_quick_sort_all(int *A, int n)
+void randomizedQuickSortAll(int *A, int n)
 {
-    randomized_quick_sort(A, 0, n - 1);
+    randomizedQuickSort(A, 0, n - 1);
 }
 
-void heap_sort(int *A, int n)
+void heapSort(int *A, int n)
 {
     // TODO na 5
 }
 
-bool is_random(int *A, int n)
+bool isRandom(int *A, int n)
 {
     return true;
 }
 
-bool is_increasing(int *A, int n) //funkcja sprawdzająca
+bool isIncreasing(int *A, int n) //funkcja sprawdzająca
 {
     for (int i = 1; i < n; i++) {
         if (A[i] <= A[i - 1]) {
@@ -132,7 +144,7 @@ bool is_increasing(int *A, int n) //funkcja sprawdzająca
     return true;
 }
 
-bool is_decreasing(int *A, int n) //funkcja sprawdzająca
+bool isDecreasing(int *A, int n) //funkcja sprawdzająca
 {
     for (int i = 1; i < n; i++)
     {
@@ -144,16 +156,16 @@ bool is_decreasing(int *A, int n) //funkcja sprawdzająca
     return true;
 }
 
-bool is_vshape(int *A, int n) // funkcja sprawdzająca
+bool isVshape(int *A, int n) // funkcja sprawdzająca
 {
     if (n % 2 == 0)
     {
-        return is_decreasing(A, n/2) && is_increasing(A + n/2, n/2);
+        return isDecreasing(A, n/2) && isIncreasing(A + n/2, n/2);
     }
-    return is_decreasing(A, n/2 + 1) && is_increasing(A + n/2, n/2 + 1);
+    return isDecreasing(A, n/2 + 1) && isIncreasing(A + n/2, n/2 + 1);
 }
 
-bool is_sorted(int *A, int n)
+bool isSorted(int *A, int n)
 {
     for (int i = 1; i < n; i++)
     {
@@ -165,14 +177,14 @@ bool is_sorted(int *A, int n)
     return true;
 }
 
-char *bool_to_string(bool b)  // funkcja sprawdzająca
+char *boolToString(bool b)  // funkcja sprawdzająca
 {
     return b ? "Y" : "N";
 }
 
-void (*fill_functions[])(int *, int) = { fill_random, fill_increasing, fill_decreasing, fill_vshape };
-bool (*check_functions[])(int *, int) = { is_random, is_increasing, is_decreasing, is_vshape };
-void (*sort_functions[])(int *, int) = { selection_sort, insertion_sort, quick_sort_all, randomized_quick_sort_all, heap_sort };
+void (*fill_functions[])(int *, int) = { fillRandom, fillIncreasing, fillDecreasing, fillVshape };
+bool (*check_functions[])(int *, int) = { isRandom, isIncreasing, isDecreasing, isVshape };
+void (*sort_functions[])(int *, int) = { selectionSort, insertionSort, quickSortAll, randomizedQuickSortAll, heapSort };
 
 char *fill_names[] = { "Random", "Increasing", "Decreasing", "V-Shape" };
 char *sort_names[] = { "SelectionSort", "InsertionSort", "QuickSort", "RandomizedQuickSort", "HeapSort" };
@@ -200,10 +212,10 @@ int main() {
                 clock_t end = clock();
                 double seconds = (double) (end - begin) / (double) CLOCKS_PER_SEC;
 
-                bool is_sorted_ok = is_sorted(A, n);
+                bool isSortedOk = isSorted(A, n);
 
                 printf("%-20s %-11s %-10d %-4s %-4s %g\n", sort_names[i], fill_names[j], n,
-                       bool_to_string(is_filled_ok), bool_to_string(is_sorted_ok), seconds);
+                       boolToString(is_filled_ok), boolToString(isSortedOk), seconds);
                 // wyświetla czasy sortowania
                 free(A);
             }

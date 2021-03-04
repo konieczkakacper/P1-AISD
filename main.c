@@ -137,14 +137,14 @@ void quickSortAll(int *A, int n)
     quickSort(A, 0, n - 1);
 }
 
-int random(int p, int r)
+int irandom(int p, int r)
 {
     return p + rand() % (r - p);
 }
 
 int randomizedPartition(int *A, int p, int r)    
 {
-    int i = random( p,r);
+    int i = irandom( p,r);
     swap(A, i, r);
     return partition(A, p, r);
 }

@@ -158,10 +158,57 @@ void randomizedQuickSortAll(int *A, int n)
     randomizedQuickSort(A, 0, n - 1);
 }
 
-void heapSort(int *A, int n)
+// HEAP SORT i funkcje pomocnicze:
+
+int left(int i)
 {
-    // TODO na 5
+    return (2 * i) + 1;
 }
+
+int right(int i)
+{
+    return (2 * i) + 2;
+}
+
+void maxHeapify(int *A, int i, int size)
+{
+    int l = left(i);
+    int r = right(i);
+    int largest = i;
+
+    if((l < size) && (A[l] > A[largest]))
+    {
+        largest = l;
+    }
+
+    if((r < size) && (A[r] > A[largest]))
+    {
+        largest = r;
+    }
+
+    if(largest != i)
+    {
+        swap(A, i, largest);
+        maxHeapify(A, largest, size);
+    }
+}
+
+void buildMaxHeap(int *A)                   //TODO: DOKOŃCZYĆ
+{
+    for(int i = (n/2); );                    // TODO: SKĄD TO JEST TO N???
+}
+
+void heapSort(int *A)
+{
+    buildMaxHeap(A);
+    for(int i = n - 1; i >= 1; i--)
+    {
+        swap(A,1,i);
+        buildMaxHeap(A, 1, i);
+    }
+}
+
+//BOOLE I RESZTA:
 
 bool isRandom(int *A, int n)
 {

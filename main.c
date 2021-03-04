@@ -71,21 +71,21 @@ void fillVshape(int *A, int n)
     }
 }
 
-void selectionSort(int *A, int n)//TODO : wyłączone działa
+void selectionSort(int *A, int n)
 {
-   /* int i;
+    int i;
     for(i = 0; i < n; i++)
     {
         int j;
         j = argMin(A, i, n);
         swap(A,i,j);
 
-    } */
+    }
 }
 
-void insertionSort(int *A, int n) //TODO : wyłączone działa
+void insertionSort(int *A, int n)
 {
-   /* int i,j;
+    int i,j;
     for(j = 1; j < n; j++)
     {
         int key = A[j];
@@ -96,7 +96,7 @@ void insertionSort(int *A, int n) //TODO : wyłączone działa
             i -= 1;
         }
         A[i + 1] = key;
-    } */
+    }
 }
 
 
@@ -121,15 +121,15 @@ int partition(int *A, int p, int r) //funkcja wykorzystana w funkcji quickSort
         
     
 
-void quickSort(int *A, int p, int r) //TODO działa do random all oraz dla increasing do 30k (bez komendy w CMakeLists.txt do zwiększania stosu)
+void quickSort(int *A, int p, int r) // działa do random all oraz dla increasing do 30k (bez komendy w CMakeLists.txt do zwiększania stosu)
 {
-    /*
+
     if(p < r)
     {
        int q = partition(A, p, r);
         quickSort(A, p, q - 1);
         quickSort(A, q + 1, r); 
-    } */
+    }
 }
 
 void quickSortAll(int *A, int n)
@@ -150,7 +150,7 @@ int randomizedPartition(int *A, int p, int r)
 }
 
 
-void randomizedQuickSort(int *A, int p, int r)   // TODO: działa
+void randomizedQuickSort(int *A, int p, int r)
 {
     int q;
     if(p < r)
@@ -201,14 +201,13 @@ void maxHeapify(int *A, int i, int size)
     }
 }
 
-void buildMaxHeap(int *A, int n)                   //TODO: DOKOŃCZYĆ
+void buildMaxHeap(int *A, int n)
 {
     int i;
     for(i = n / 2 - 1; i >= 0; i-- )
     {
         maxHeapify(A, i, n);
     }
-
 }
 
 void heapSort(int *A, int n)
@@ -218,8 +217,8 @@ void heapSort(int *A, int n)
    int i;
     for(i = n - 1; i > 0; i--)
     {
-        swap(A,1,i);
-        maxHeapify(A, 1, i);
+        swap(A,0,i);
+        maxHeapify(A, 0, i);
     }
 }
 

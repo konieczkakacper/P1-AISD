@@ -22,7 +22,7 @@ int argMin(int *A, int begin, int end) // szukanie najniższego argumentu uzyte 
     return  marg;
 }
 
-void swap(int *A, int i, int j) //uzyte w sekectioSort
+void swap(int *A, int i, int j) //uzyte w selectionSort
 {
     int tmp;
     tmp = A[i];
@@ -71,21 +71,21 @@ void fillVshape(int *A, int n)
     }
 }
 
-void selectionSort(int *A, int n)
+void selectionSort(int *A, int n)//TODO : wyłączone działa
 {
-    int i;
+   /* int i;
     for(i = 0; i < n; i++)
     {
         int j;
         j = argMin(A, i, n);
         swap(A,i,j);
 
-    }
+    } */
 }
 
-void insertionSort(int *A, int n)
+void insertionSort(int *A, int n) //TODO : wyłączone działa
 {
-    int i,j;
+   /* int i,j;
     for(j = 1; j < n; j++)
     {
         int key = A[j];
@@ -96,7 +96,7 @@ void insertionSort(int *A, int n)
             i -= 1;
         }
         A[i + 1] = key;
-    }
+    } */
 }
 
 
@@ -104,7 +104,8 @@ int partition(int *A, int p, int r) //funkcja wykorzystana w funkcji quickSort
 {
     int x = A[r];
     int i = p - 1;
-    for(int j = p; j < r; j++)
+    int j;
+    for(j = p; j < r; j++)
     {
         if(A[j] <= x)
         {
@@ -120,14 +121,15 @@ int partition(int *A, int p, int r) //funkcja wykorzystana w funkcji quickSort
         
     
 
-void quickSort(int *A, int p, int r)
+void quickSort(int *A, int p, int r) //TODO działa do random all oraz dla increasing do 30k (bez komendy w CMakeLists.txt do zwiększania stosu)
 {
+    /*
     if(p < r)
     {
-        q = partition(A, p, r);
+       int q = partition(A, p, r);
         quickSort(A, p, q - 1);
         quickSort(A, q + 1, r); 
-    }
+    } */
 }
 
 void quickSortAll(int *A, int n)
@@ -135,14 +137,20 @@ void quickSortAll(int *A, int n)
     quickSort(A, 0, n - 1);
 }
 
+int random(int p, int r)
+{
+    return p + rand() % (r - p);
+}
+
 int randomizedPartition(int *A, int p, int r)    
 {
-    int i = random();                           // TODO: O CO TU KAMAN Z TYM RANDOM????!?!?!?!
+    int i = random( p,r);
     swap(A, i, r);
     return partition(A, p, r);
 }
 
-void randomizedQuickSort(int *A, int p, int r)   // TODO: DO SPRAWDZENIA CZY DZIAŁA
+
+void randomizedQuickSort(int *A, int p, int r)   // TODO: działa
 {
     int q;
     if(p < r)
@@ -176,7 +184,7 @@ void maxHeapify(int *A, int i, int size)
     int r = right(i);
     int largest = i;
 
-    if((l < size) && (A[l] > A[largest]))
+    if(l < size && A[l] > A[largest])
     {
         largest = l;
     }
@@ -193,29 +201,36 @@ void maxHeapify(int *A, int i, int size)
     }
 }
 
-void buildMaxHeap(int *A)                   //TODO: DOKOŃCZYĆ
+void buildMaxHeap(int *A, int n)                   //TODO: DOKOŃCZYĆ
 {
-    for(int i = (n/2); );                    // TODO: SKĄD TO JEST TO N???
+    int i;
+    for(i = n / 2 - 1; i >= 0; i-- )
+    {
+        maxHeapify(A, i, n);
+    }
+
 }
 
-void heapSort(int *A)
+void heapSort(int *A, int n)
 {
-    buildMaxHeap(A);
-    for(int i = n - 1; i >= 1; i--)
+   buildMaxHeap(A, n);
+
+   int i;
+    for(i = n - 1; i > 0; i--)
     {
         swap(A,1,i);
-        buildMaxHeap(A, 1, i);
+        maxHeapify(A, 1, i);
     }
 }
 
-//BOOLE I RESZTA:
+//funkcje sprawdzające działanie projektu
 
 bool isRandom(int *A, int n)
 {
     return true;
 }
 
-bool isIncreasing(int *A, int n) //funkcja sprawdzająca
+bool isIncreasing(int *A, int n)
 {
     for (int i = 1; i < n; i++) {
         if (A[i] <= A[i - 1]) {
@@ -225,7 +240,7 @@ bool isIncreasing(int *A, int n) //funkcja sprawdzająca
     return true;
 }
 
-bool isDecreasing(int *A, int n) //funkcja sprawdzająca
+bool isDecreasing(int *A, int n)
 {
     for (int i = 1; i < n; i++)
     {
@@ -237,7 +252,7 @@ bool isDecreasing(int *A, int n) //funkcja sprawdzająca
     return true;
 }
 
-bool isVshape(int *A, int n) // funkcja sprawdzająca
+bool isVshape(int *A, int n)
 {
     if (n % 2 == 0)
     {
@@ -258,8 +273,9 @@ bool isSorted(int *A, int n)
     return true;
 }
 
-char *boolToString(bool b)  // funkcja sprawdzająca
+char *boolToString(bool b)
 {
+
     return b ? "Y" : "N";
 }
 

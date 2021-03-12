@@ -31,7 +31,7 @@ void swap(int *A, int i, int j) //uzyte w selectionSort
 }
 
 
-void fillRandom(int *A, int n)  //generuje randomowe liczby na 3
+void fillRandom(int *A, int n)  //generuje randomowe liczby
 {
     for (int i = 0; i < n; i++)
     {
@@ -123,7 +123,6 @@ int partition(int *A, int p, int r) //funkcja wykorzystana w funkcji quickSort
 
 void quickSort(int *A, int p, int r) // działa do random all oraz dla increasing do 30k (bez komendy w CMakeLists.txt do zwiększania stosu)
 {
-
     if(p < r)
     {
        int q = partition(A, p, r);
@@ -303,7 +302,7 @@ int main() {
                 fill(A, n);
                 bool is_filled_ok = check(A, n);
 
-                clock_t begin = clock(); //startuje pomiar czasu wykonywania się funkcji
+                clock_t begin = clock();
                 sort(A, n);
                 clock_t end = clock();
                 double seconds = (double) (end - begin) / (double) CLOCKS_PER_SEC;

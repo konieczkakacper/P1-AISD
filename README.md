@@ -1,4 +1,4 @@
-# Projekt-1-algorytmy
+# P1AISD
 co-op Robert D.
 
 Termin wykonania: 14.03.2021 23:59 
